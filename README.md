@@ -1,6 +1,6 @@
-# mlops-learn
+# Machine Learning Development Operations Learning Project
 
-Documents Participation in MLOps Zoomcamp
+## Documents Participation in MLOps Zoomcamp
 
 ---
 

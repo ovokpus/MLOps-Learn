@@ -1,4 +1,4 @@
-# MLOps Zoomcamp/ Week 2: Introduction to MLflow, ML experiments and model registry.
+# Introduction to MLflow, ML experiments and model registry.
 
 # Introduction:
 
@@ -61,20 +61,21 @@ By accessing the provided local url we can access the UI. Within this UI we have
 
 In addition to the backend URI, we can also add an artifact root directory where we store the artifacts for runs, this is done by adding a `--default-artifact-root` paramater:
 
-````
+```bash
 mlflow ui --backend-store-uri sqlite:///mlflow.db --default-artifact-root ./mlruns
-
+```
 
 ### MLflow Tracking Client API:
 
 In addition to the UI, an interface that is introduced in the course and used to automate processes is the Tracking API. Initialized through:
+
 ```python
 from mlflow.tracking import MlflowClient
 
 MLFLOW_TRACKING_URI = "sqlite:///mlflow.db"
 
 client = MlflowClient(tracking_uri=MLFLOW_TRACKING_URI)
-````
+```
 
 the `client` is an object that allows managing experiments, runs, models and model registries (cf. Interacting with MLflow through the Tracking Client). See: https://www.mlflow.org/docs/latest/python_api/mlflow.tracking.html For more information on the interface.
 

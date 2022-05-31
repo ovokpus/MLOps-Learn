@@ -75,11 +75,13 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser()
     parser.add_argument(
         "--raw_data_path",
-        help="the location where the raw NYC taxi trip data was saved"
+        help="the location where the raw NYC taxi trip data was saved",
+        default="../data/"
     )
     parser.add_argument(
         "--dest_path",
-        help="the location where the resulting files will be saved."
+        help="the location where the resulting files will be saved.",
+        default="./output/"
     )
     args = parser.parse_args()
 

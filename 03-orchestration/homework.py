@@ -120,18 +120,18 @@ def main_lr(date="2021-08-15"):
     run_model(df_val_processed, categorical, dv, lr, date)
 
 
-main_lr()
+# main_lr()
 
-# from prefect.deployments import DeploymentSpec
-# from prefect.orion.schemas.schedules import CronSchedule
-# from prefect.flow_runners import SubprocessFlowRunner
-# from datetime import timedelta
+from prefect.deployments import DeploymentSpec
+from prefect.orion.schemas.schedules import CronSchedule
+from prefect.flow_runners import SubprocessFlowRunner
+from datetime import timedelta
 
-# DeploymentSpec(
-#     flow=main_lr,
-#     name="lr_training_schedule",
-#     schedule=CronSchedule(cron="0 9 15 * *",
-#                           timezone="America/Los_Angeles"),
-#     flow_runner=SubprocessFlowRunner(),
-#     tags=["ml"]
-# )
+DeploymentSpec(
+    flow=main_lr,
+    name="lr_training_schedule",
+    schedule=CronSchedule(cron="0 9 15 * *",
+                          timezone="America/Los_Angeles"),
+    flow_runner=SubprocessFlowRunner(),
+    tags=["ml"]
+)

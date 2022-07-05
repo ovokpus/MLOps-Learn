@@ -1,14 +1,3 @@
-#!/usr/bin/env python
-# coding: utf-8
-
-# In[1]:
-
-
-# get_ipython().system('pip freeze | grep scikit-learn')
-
-
-# In[2]:
-
 import argparse
 import pickle
 import pandas as pd

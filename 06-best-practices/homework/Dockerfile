@@ -9,7 +9,7 @@ COPY [ "Pipfile", "Pipfile.lock", "./" ]
 
 RUN pipenv install --system --deploy
 
-COPY [ "batch.py", "batch.py" ]
-COPY [ "model.bin", "model.bin" ]
+COPY [ "batch.py", "./" ]
+COPY [ "model.bin", "./" ]
 
 ENTRYPOINT [ "python", "batch.py" ]

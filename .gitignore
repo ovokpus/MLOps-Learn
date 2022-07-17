@@ -4,3 +4,6 @@ data/
 mlruns/
 models/
 .localstack/
+__pycache__/
+.pytest_cache/
+.vscode/

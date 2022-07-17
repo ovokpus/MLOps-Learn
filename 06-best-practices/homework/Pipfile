@@ -8,6 +8,7 @@ scikit-learn = "==1.0.2"
 pandas = "*"
 pyarrow = "*"
 s3fs = "*"
+localstack = "*"
 
 [dev-packages]
 pytest = "*"

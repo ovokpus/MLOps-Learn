@@ -6,7 +6,7 @@ make all --print-data-base --no-builtin-variables --no-builtin-rules --question
 # This is free software: you are free to change and redistribute it.
 # There is NO WARRANTY, to the extent permitted by law.
 
-# Make data base, printed on Sat Jul 16 20:56:08 2022
+# Make data base, printed on Sun Jul 17 18:06:03 2022
 
 # Variables
 
@@ -71,7 +71,7 @@ NVM_BIN = /home/ovokpus/.nvm/versions/node/v16.14.2/bin
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # environment
-VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-257690ca-b210-4211-8569-176355fb987f.sock
+VSCODE_IPC_HOOK_CLI = /tmp/vscode-ipc-167f43e6-663c-4366-aaa6-e3c2755026e7.sock
 # default
 .FEATURES := target-specific order-only second-expansion else-if shortest-stem undefine oneshell archives jobserver output-sync check-symlink load
 # environment
@@ -85,11 +85,11 @@ PWD = /home/ovokpus/mlops-learn
 # environment
 OCS_TLS_KEY_FILE = /home/ovokpus/secrets/certs/controller.key
 # environment
-WSL_INTEROP = /run/WSL/162_interop
+WSL_INTEROP = /run/WSL/10_interop
 # environment
 YOUR_ORC8R_DOMAIN_NO_WILDCARD = orc8r.totogicore.com
 # environment
-WT_SESSION = 2c0c2598-9f9a-41e7-876f-e4fdd454f126
+WT_SESSION = 6535a9da-e10c-4b54-8730-6c73410d91a5
 # environment
 RH_ZONE_ID_LONG_ESWATINI = /hostedzone/Z02007071SXRUQ1F3OIE4
 # environment
@@ -274,14 +274,14 @@ GNUmakefile:
 # No general ('VPATH' variable) search path.
 
 # strcache buffers: 1 (0) / strings = 25 / storage = 280 B / avg = 11 B
+# current buf: size = 8162 B / used = 280 B / count = 25 / avg = 11 B
  
 make: *** No rule to make target 'all'.  Stop.
 
-# current buf: size = 8162 B / used = 280 B / count = 25 / avg = 11 B
 
 # strcache performance: lookups = 28 / hit rate = 10%
 # hash-table stats:
 # Load=25/8192=0%, Rehash=0, Collisions=1/28=4%
-# Finished Make data base on Sat Jul 16 20:56:08 2022
+# Finished Make data base on Sun Jul 17 18:06:03 2022
 
  

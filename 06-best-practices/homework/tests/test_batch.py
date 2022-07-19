@@ -31,8 +31,13 @@ def test_prepare_data():
     columns = ['PUlocationID', 'DOlocationID',
                'pickup_datetime', 'dropOff_datetime']
     df = pd.DataFrame(data, columns=columns)
+    options = {
+        'client_kwargs': {
+            'endpoint_url': 'http:localhost:4569'
+        }
+    }
 
     expected_df = batch.read_data(
-        '/home/ovokpus/mlops-learn/06-best-practices/homework/tests/data/test_prepare_data.parquet')
+        '/home/ovokpus/mlops-learn/06-best-practices/homework/tests/data/test_prepare_data.parquet', options)
     assert df.equals(expected_df)
     assert df.columns.all() == expected_df.columns.all()

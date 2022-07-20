@@ -28,7 +28,6 @@ records_response = kinesis_client.get_records(
     Limit=1,
 )
 
-
 records = records_response['Records']
 pprint(records)
 
@@ -53,6 +52,5 @@ print(f'diff={diff}')
 
 assert 'values_changed' not in diff
 assert 'type_changes' not in diff
-
 
 print('all good')

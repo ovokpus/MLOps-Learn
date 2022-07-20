@@ -9,18 +9,7 @@ def dt(hour, minute, second=0):
     return datetime(2020, 1, 1, hour, minute, second)
 
 
-def prepare_data(df, categorical=['PUlocationID', 'DOlocationID']):
-    df['duration'] = df.dropOff_datetime - df.pickup_datetime
-    df['duration'] = df.duration.dt.total_seconds() / 60
-
-    df = df[(df.duration >= 1) & (df.duration <= 60)].copy()
-
-    df[categorical] = df[categorical].fillna(-1).astype('int').astype('str')
-    print(len(df))
-    return df
-
-
-def test_prepare_data():
+def test_read_data():
     data = [
         (None, None, dt(1, 2), dt(1, 10)),
         (1, 1, dt(1, 2), dt(1, 10)),
@@ -28,16 +17,35 @@ def test_prepare_data():
         (1, 1, dt(1, 2, 0), dt(2, 2, 1)),
     ]
 
+    year = 2021
+    month = 1
+
     columns = ['PUlocationID', 'DOlocationID',
                'pickup_datetime', 'dropOff_datetime']
+
     df = pd.DataFrame(data, columns=columns)
+
     options = {
         'client_kwargs': {
-            'endpoint_url': 'http:localhost:4569'
+            'endpoint_url': os.getenv('S3_ENDPOINT_URL')
         }
     }
 
     expected_df = batch.read_data(
-        '/home/ovokpus/mlops-learn/06-best-practices/homework/tests/data/test_prepare_data.parquet', options)
-    assert df.equals(expected_df)
+        os.getenv('INPUT_FILE_PATTERN').format(year=year, month=month),
+        options
+    )
+
+    actual_transformed_df = batch.prepare_data(
+        df.copy(), categorical=['PUlocationID', 'DOlocationID'])
+
+    expected_transformed_df = batch.prepare_data(
+        expected_df.copy(), categorical=['PUlocationID', 'DOlocationID'])
+
+    print(len(expected_df))
+
+    assert len(df) == len(expected_df)
     assert df.columns.all() == expected_df.columns.all()
+    assert len(expected_transformed_df) == len(actual_transformed_df)
+    assert len(expected_transformed_df.columns) == len(
+        actual_transformed_df.columns)

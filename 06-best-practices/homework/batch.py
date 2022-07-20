@@ -39,13 +39,14 @@ def get_output_path(year, month):
 
 
 def read_data(filename, options):
-    # filepath = os.getenv('S3_ENDPOINT_URL', filename)
-    # df = pd.read_parquet(filepath)
-
-    # bucket = os.getenv('S3_BUCKET_NAME', 'nyc-duration_prediction')
     df = pd.read_parquet(
         filename, storage_options=options)
     return df
+
+
+def save_data(df, output_file, options):
+    df.to_parquet(output_file, engine='pyarrow',
+                  index=False, compression=None, storage_options=options)
 
 
 def prepare_data(df, categorical):
@@ -65,7 +66,7 @@ def main(year, month):
     categorical = ['PUlocationID', 'DOlocationID']
     options = {
         'client_kwargs': {
-            'endpoint_url': 'http:localhost:4569'
+            'endpoint_url': os.getenv('S3_ENDPOINT_URL'),
         }
     }
     raw_df = read_data(input_file, options)
@@ -77,13 +78,13 @@ def main(year, month):
     y_pred = lr.predict(X_val)
 
     print('predicted mean duration:', y_pred.mean())
-
+    print('sum of predicted durations:', y_pred.sum())
     df_result = pd.DataFrame()
     df_result['ride_id'] = df['ride_id']
     df_result['predicted_duration'] = y_pred
 
-    df_result.to_parquet(output_file, engine='pyarrow',
-                         index=False, compression=None)
+    save_data(df_result, output_file, options)
+    print('saved to', output_file)
 
 
 if __name__ == '__main__':
